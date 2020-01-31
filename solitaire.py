@@ -1,6 +1,8 @@
 import random
+import time
 
 debug = False
+debugTime = True
 
 # Init
 ranks = 'A 2 3 4 5 6 7 8 9 10 11 12 13'.split()
@@ -49,6 +51,9 @@ while True:
     if int(userInput) and int(userInput) > 0:
         rounds = int(userInput)
         deadGameCount = 0
+
+        if debugTime:
+            startTime = time.process_time()
 
         # begin all simulations
         for i in range(rounds):
@@ -117,6 +122,8 @@ while True:
         print('Total Rounds: ' + str(rounds))
         print('Dead Game Count: ' + str(deadGameCount))
         print('Odds of dealing a Dead game of Solitaire: ' + str(deadGameCount / rounds * 100) + '%')
+        if debugTime:
+            print('Simulation executed in ' + str(time.process_time() - startTime) + ' seconds')
         print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     else:
         break
