@@ -9,6 +9,8 @@ grid = [
 [0,0,0,4,1,9,0,0,5],
 [0,0,0,0,8,0,0,7,9]]
 
+solutions = 0
+
 # function to print the grid
 def printGrid(grid):
     for i in range(len(grid)):
@@ -33,7 +35,7 @@ def possible(y,x,n):
 
 # recursive function to solve the puzzle
 def solve():
-    global grid
+    global grid, solutions
     for y in range(9):
         for x in range(9):
             if grid[y][x] == 0:
@@ -44,6 +46,9 @@ def solve():
                         grid[y][x] = 0
                 return
     printGrid(grid)
-    input("More?")
+    solutions = solutions + 1
+    print()
 
 solve()
+
+print("Total number of solutions: " + str(solutions))
